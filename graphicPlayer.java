@@ -20,7 +20,7 @@ public class graphicPlayer {
 				try {
 					musicPlayerGUI window = new musicPlayerGUI();
 					window.setFrameView();
-					
+
 
 
 					//Load data from file when button is pressed. 
@@ -28,14 +28,14 @@ public class graphicPlayer {
 					window.getData.addMouseListener(new MouseAdapter() {
 
 						String fname = "";
-						
+
 						PlayList mySongs;
 
 						@Override
 						public void mouseClicked(MouseEvent e) {
-							
-							
-							
+
+
+
 							//Default initialization of PlayList as a SimplePlayList.
 							//User selects the correct kind of playList.
 							if(window.basicRadioButton.isSelected()){
@@ -47,9 +47,9 @@ public class graphicPlayer {
 							else if(window.queueRadioButton.isSelected()){
 								mySongs = new PlayListQueue();
 							}
-							
 
-							
+
+
 							window.loadDataProceed();
 							fname = window.getUserText();
 
@@ -65,14 +65,14 @@ public class graphicPlayer {
 									song.getNextTrack(fileIn);
 									mySongs.addTrack(song);
 								}
-								
+
 								window.setTextExternal("Data Read. HIT BUTTON TO DISPLAY");
-								
+
 								// Event Handler for PLAY BUTTON
 								window.displayData.addMouseListener(new MouseAdapter() {
 									@Override
 									public void mouseClicked(MouseEvent e) {
-										
+
 										if(!mySongs.isEmpty()){
 											// Initialize display objects
 											SimpleMusicTrack currentSong = new SimpleMusicTrack();
@@ -93,45 +93,46 @@ public class graphicPlayer {
 											window.btnEND.doClick();
 										}
 
-										
+
 									}
 								});
-								
+
 								// Event Handler for END BUTTON
 								window.btnEND.addMouseListener(new MouseAdapter() {
 									@Override
 									public void mouseClicked(MouseEvent arg0) {
-										
+
 										int i = 1;
-										
+
 										String lineA = "Tracks remaining in play list" + "\n";
 										String lineB = "----------------------------------------------------" + "\n";
 										String lineC = "";
-										
+
 										if(mySongs.isEmpty()){
 											lineC = "No Songs Remaining";
 										}
-										
+
 										while(!mySongs.isEmpty()){
 											SimpleMusicTrack remSong = (SimpleMusicTrack) mySongs.getNextTrack();
 											lineC = lineC + i + " - " + remSong.toString() + "\n";
 											i++;
 										}
-										
+
 										String output = lineA + lineB + lineC;
-										
+
 										window.setTextExternal(output);
-										
+
 									}
 								});
 
 							}
 							catch(IOException el){
+								window.setTextExternal("File not found");
 								System.out.println("Error");
 							}
 						}
 					});
-					
+
 
 
 				}			
