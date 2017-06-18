@@ -14,6 +14,11 @@ import javax.swing.ButtonGroup;
 
 public class musicPlayerGUI {
 
+	/*
+	 * v1.0 GUI has buttons that do not resize correctly
+	 * v1.1 GUI is redrawn.
+	 */
+	
 	private JFrame frmMusicplayerV;
 	private JTextField textField;
 	public JButton getData;
@@ -49,9 +54,9 @@ public class musicPlayerGUI {
 	private void initialize() {
 		frmMusicplayerV = new JFrame();
 		frmMusicplayerV.setTitle("MusicPlayer v1.0");
-		frmMusicplayerV.setBounds(100, 100, 450, 300);
+		frmMusicplayerV.setBounds(100, 100, 600, 400);
 		frmMusicplayerV.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMusicplayerV.getContentPane().setLayout(new GridLayout(3, 1, 0, 0));
+		frmMusicplayerV.getContentPane().setLayout(new GridLayout(4, 2, 0, 0));
 
 		JSplitPane splitPane = new JSplitPane();
 		splitPane.setResizeWeight(0.25);
